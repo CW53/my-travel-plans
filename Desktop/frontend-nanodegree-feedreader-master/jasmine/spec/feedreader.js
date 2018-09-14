@@ -9,7 +9,7 @@
  * to ensure they don't run until the DOM is ready.
  */
 $(
-  (function() {
+  function() {
     /* This is our first test suite - a test suite just contains
     * a related set of tests. This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
@@ -32,7 +32,7 @@ $(
          * and that the URL is not empty.
          */
 
-      it('url defined', function() {
+      it("url defined", function() {
         for (let feed of allFeeds) {
           expect(feed.url).toBeDefined();
           expect(feed.url.length).not.toBe(0);
@@ -44,17 +44,17 @@ $(
          * and that the name is not empty.
          */
 
-      it('name defined', function() {
+      it("name defined", function() {
         for (let feed of allFeeds) {
           expect(feed.name).toBeDefined();
           expect(feed.name.length).not.toBe(0);
         }
       });
 
-
+})
     /* TODO: Write a new test suite named "The menu" */
 
-    describe('The menu', function() {
+    describe("The menu", function() {
 
 
 
@@ -63,9 +63,9 @@ $(
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-         it('is hidden', function () {
-           const body = document.querySelector('body');
-           expect(body.classList.contains('menu-hidden')).toBe(true);
+         it("is hidden", function () {
+           const body = document.querySelector("body");
+           expect(body.classList.contains("menu-hidden")).toBe(true);
          });
 
     /* TODO: Write a test that ensures the menu changes
@@ -73,17 +73,17 @@ $(
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-          it('toggles on and off', function() {
-            const body = document.querySelector('body');
-            const menu = document.querySelector('.menu-icon-link');
+          it("toggles on and off", function() {
+            const body = document.querySelector("body");
+            const menu = document.querySelector(".menu-icon-link");
 
             menu.click();
-            expect(body.classList.contains('menu-hidden')).toBe(false);
+            expect(body.classList.contains("menu-hidden")).toBe(false);
           });
   });
     /* TODO: Write a new test suite named "Initial Entries" */
 
-describe('Initial Entries', function() {
+describe("Initial Entries", function() {
     /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
@@ -93,14 +93,14 @@ describe('Initial Entries', function() {
          beforeEach(function(done) {
            loadFeed(0, done);
          });
-         it('completes work', function() {
-           const feed = document.querySelector('.feed');
+         it("completes work", function() {
+           const feed = document.querySelector(".feed");
            expect(feed.children.length > 0).toBe(true);
          });
 });
     /* TODO: Write a new test suite named "New Feed Selection" */
-desribe('New Feed Selection', function() {
-    const feed = document.querySelector('.feed');
+desribe("New Feed Selection", function() {
+    const feed = document.querySelector(".feed");
     const firstFeed = [];
 
     /* TODO: Write a test that ensures when a new feed is loaded
@@ -115,9 +115,10 @@ desribe('New Feed Selection', function() {
            loadFeed(1, done);
          });
 
-         it('content changes', function() {
+         it("content changes", function() {
            Array.from(feed.children).forEach(function(entry, index) {
              expect(entry.innerText, firstFeed[index], entry.innerText === firstFeed[index]);
              expect(entry.innerText === firstFeed[index]).toBe(false);
          });
        });
+})
